@@ -15,6 +15,7 @@ services:
       - bootstrap.memory_lock=true
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
       - "ES_JAVA_OPTS=-Xms1000m -Xmx1000m"
+      - xpack.monitoring.collection.enabled=true
       - xpack.license.self_generated.type=basic
       - xpack.security.enabled=true
 #      - xpack.security.http.ssl.enabled=true
@@ -56,6 +57,7 @@ services:
       - bootstrap.memory_lock=true
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
       - "ES_JAVA_OPTS=-Xms1000m -Xmx1000m"
+      - xpack.monitoring.collection.enabled=true
       - xpack.license.self_generated.type=basic
       - xpack.security.enabled=true
 #      - xpack.security.http.ssl.enabled=true
@@ -91,6 +93,7 @@ services:
       - bootstrap.memory_lock=true
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
       - "ES_JAVA_OPTS=-Xms1000m -Xmx1000m"
+      - xpack.monitoring.collection.enabled=true
       - xpack.license.self_generated.type=basic
       - xpack.security.enabled=true
 #      - xpack.security.http.ssl.enabled=true
@@ -133,7 +136,27 @@ services:
       - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     networks:
       - elastic
-   
+
+  logstash:
+    restart: always
+    image: docker.elastic.co/logstash/logstash:7.3.1
+    container_name: logstash
+    environment:
+      - "LS_JAVA_OPTS: -Xmx1024m -Xms1024m"
+      - "TZ=America/Sao_Paulo"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 5514:5514/tcp
+      - 5514:5514/udp
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./logstash/pipeline/:/usr/share/logstash/pipeline/
+    networks:
+      - elastic
+ 
 networks:
   elastic:
 
