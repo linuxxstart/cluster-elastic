@@ -139,7 +139,7 @@ services:
 
   logstash:
     restart: always
-    image: docker.elastic.co/logstash/logstash:7.3.1
+    image: docker.elastic.co/logstash/logstash:7.3.
     container_name: logstash
     environment:
       - "LS_JAVA_OPTS: -Xmx1024m -Xms1024m"
