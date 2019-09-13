@@ -16,3 +16,4 @@ O arquivo .env contém a senha do usuário elastic (para logar no kibana) e nome
 # docker-compose up -d
 ```
 ![kibana](https://user-images.githubusercontent.com/55243431/64805565-bf56df00-d567-11e9-87e8-116eb3f299e6.png)
+![cluster_elastic](https://user-images.githubusercontent.com/55243431/64884121-4c1c9e00-d637-11e9-81d8-193dc4b6c642.png)
