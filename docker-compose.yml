@@ -15,7 +15,7 @@ services:
       - bootstrap.memory_lock=true
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
       - "ES_JAVA_OPTS=-Xms1000m -Xmx1000m"
-      - xpack.license.self_generated.type=trial 
+      - xpack.license.self_generated.type=basic
       - xpack.security.enabled=true
 #      - xpack.security.http.ssl.enabled=true
 #      - xpack.security.http.ssl.key=$CERTS_DIR/es01/es01.key
@@ -56,7 +56,7 @@ services:
       - bootstrap.memory_lock=true
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
       - "ES_JAVA_OPTS=-Xms1000m -Xmx1000m"
-      - xpack.license.self_generated.type=trial
+      - xpack.license.self_generated.type=basic
       - xpack.security.enabled=true
 #      - xpack.security.http.ssl.enabled=true
 #      - xpack.security.http.ssl.key=$CERTS_DIR/es02/es02.key
@@ -91,7 +91,7 @@ services:
       - bootstrap.memory_lock=true
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
       - "ES_JAVA_OPTS=-Xms1000m -Xmx1000m"
-      - xpack.license.self_generated.type=trial
+      - xpack.license.self_generated.type=basic
       - xpack.security.enabled=true
 #      - xpack.security.http.ssl.enabled=true
 #      - xpack.security.http.ssl.key=$CERTS_DIR/es03/es03.key
