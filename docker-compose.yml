@@ -3,7 +3,9 @@ version: '2.2'
 services:
   es01:
     restart: always
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    cpus: "0.25"
+    mem_limit: 2g
     container_name: es01
     environment:
       - node.name=es01
@@ -45,7 +47,9 @@ services:
 
   es02:
     restart: always
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    cpus: "0.25"
+    mem_limit: 2g
     container_name: es02
     environment:
       - node.name=es02
@@ -81,7 +85,9 @@ services:
 
   es03:
     restart: always
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    cpus: "0.25"
+    mem_limit: 2g
     container_name: es03
     environment:
       - node.name=es03
@@ -116,13 +122,15 @@ services:
   
 
   wait_until_ready:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
     command: /usr/bin/true
     depends_on: {"es01": {"condition": "service_healthy"}}
    
   kibana:
     restart: always
-    image: docker.elastic.co/kibana/kibana:7.3.1
+    image: docker.elastic.co/kibana/kibana:7.5.0
+    cpus: "0.25"
+    mem_limit: 2g
     container_name: kibana
     environment:
       - "TZ=America/Sao_Paulo"
@@ -139,10 +147,12 @@ services:
 
   logstash:
     restart: always
-    image: docker.elastic.co/logstash/logstash:7.3.1
+    image: docker.elastic.co/logstash/logstash:7.5.0
+    cpus: "0.25"
+    mem_limit: 2g
     container_name: logstash
     environment:
-      - "LS_JAVA_OPTS: -Xmx1024m -Xms1024m"
+      - "LS_JAVA_OPTS=-Xmx1024m -Xms1024m"
       - "TZ=America/Sao_Paulo"
     ulimits:
       memlock:
