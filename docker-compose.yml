@@ -3,7 +3,7 @@ version: '2.2'
 services:
   es01:
     restart: always
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
     cpus: "0.25"
     mem_limit: 2g
     container_name: es01
@@ -47,7 +47,7 @@ services:
 
   es02:
     restart: always
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
     cpus: "0.25"
     mem_limit: 2g
     container_name: es02
@@ -85,7 +85,7 @@ services:
 
   es03:
     restart: always
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
     cpus: "0.25"
     mem_limit: 2g
     container_name: es03
@@ -122,13 +122,13 @@ services:
   
 
   wait_until_ready:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
     command: /usr/bin/true
     depends_on: {"es01": {"condition": "service_healthy"}}
    
   kibana:
     restart: always
-    image: docker.elastic.co/kibana/kibana:7.5.0
+    image: docker.elastic.co/kibana/kibana:7.6.2
     cpus: "0.25"
     mem_limit: 2g
     container_name: kibana
@@ -147,7 +147,7 @@ services:
 
   logstash:
     restart: always
-    image: docker.elastic.co/logstash/logstash:7.5.0
+    image: docker.elastic.co/logstash/logstash:7.6.2
     cpus: "0.25"
     mem_limit: 2g
     container_name: logstash
